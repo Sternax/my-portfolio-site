@@ -1,13 +1,105 @@
+.portfolio-description.open .portfolio-dropdown-btn {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.portfolio-card-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+  max-width: 1200px;
+}
+
+.portfolio-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  min-width: 0;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
 .portfolio-featured-image {
   width: 100%;
-  height: 200px;
-  max-width: 400px;
-  max-height: 400px;
-  object-fit: contain;
-  object-position: left;
-  margin-top: 12px;
-  margin-bottom: 16px;
+  height: 70%;
+  object-fit: cover;
+  object-position: center;
   display: block;
+  border-radius: 8px;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-card.open .portfolio-featured-image {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.portfolio-title-link {
+  position: relative;
+  z-index: 2;
+  font-family: "ClashDisplay-Regular";
+  font-size: 1.5rem;
+  color: #222;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+.portfolio-dropdown-btn {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: inherit;
+  border-radius: 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-description {
+  width: 100%;
+  padding: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #fff;
+  z-index: 3;
+  box-sizing: border-box;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 1024px) {
+  .portfolio-card-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .portfolio-card-list {
+    grid-template-columns: 1fr;
+  }
+  .portfolio-card {
+    aspect-ratio: unset;
+    min-height: 300px;
+  }
 }
 
 .portfolio-list {
@@ -32,56 +124,18 @@
   gap: 1rem;
 }
 
-.portfolio-title-link {
-  font-family: "ClashDisplay-Regular";
-  font-size: 2rem;
-  color: #222;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.portfolio-title-link:hover {
-  color: #007acc;
-}
-
-.portfolio-dropdown-btn {
-  background-color: transparent;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.portfolio-description {
+.portfolio-description.open {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 1rem;
-  opacity: 0;
-  pointer-events: none;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.portfolio-description.open {
+  justify-content: space-between;
   opacity: 1;
   pointer-events: auto;
-  max-height: 2000px;
+  transform: translateY(0);
 }
 
 .portfolio-description p {
   font-family: "ClashDisplay-Light";
   font-size: 1.25rem;
-  margin-bottom: 1rem;
-}
-
-.portfolio-grid__image {
-  object-fit: contain;
-  max-width: 300px;
-  border-radius: 6px;
   margin-bottom: 1rem;
 }
 

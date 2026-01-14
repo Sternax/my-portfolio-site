@@ -16,16 +16,26 @@ const Portfolio = ({ data }) => {
       {items.length === 0 ? (
         <div>No portfolio items found.</div>
       ) : (
-        <ul className="portfolio-list">
+        <div className="portfolio-card-list">
           {items.map((item, idx) => (
-            <li key={item.contentful_id} className="portfolio-list-item">
-              <div className="portfolio-list-header">
-                <Link
-                  to={`/${item.portfolioLink.replace(/^\/+/, "")}`}
-                  className="portfolio-title-link"
-                >
-                  {item.portfolioTitle}
-                </Link>
+            <div
+              key={item.contentful_id}
+              className={`portfolio-card${openIndex === idx ? " open" : ""}`}
+            >
+              {item.portfolioFeaturedImage?.file?.url && (
+                <Image
+                  src={item.portfolioFeaturedImage.file.url}
+                  alt={item.portfolioFeaturedImage.title || "Featured"}
+                  className="portfolio-featured-image"
+                />
+              )}
+              <Link
+                to={`/${item.portfolioLink.replace(/^\/+/, "")}`}
+                className="portfolio-title-link"
+              >
+                {item.portfolioTitle}
+              </Link>
+              {openIndex !== idx && (
                 <button
                   className="portfolio-dropdown-btn"
                   onClick={() => handleToggle(idx)}
@@ -34,11 +44,11 @@ const Portfolio = ({ data }) => {
                 >
                   <img
                     src="/arrow-down.svg"
-                    alt={openIndex === idx ? "Collapse" : "Expand"}
-                    className={"arrow" + (openIndex === idx ? " rotated" : "")}
+                    alt="Expand"
+                    className="arrow rotated"
                   />
                 </button>
-              </div>
+              )}
               <div
                 id={`desc-${item.contentful_id}`}
                 className={
@@ -48,15 +58,6 @@ const Portfolio = ({ data }) => {
                 style={{ pointerEvents: openIndex === idx ? "auto" : "none" }}
               >
                 <p>{item.portfolioDescription?.portfolioDescription}</p>
-                {item.portfolioFeaturedImage?.file?.url && (
-                  <Image
-                    src={item.portfolioFeaturedImage.file.url}
-                    alt={item.portfolioFeaturedImage.title || "Featured"}
-                    className="portfolio-featured-image"
-                    fluid
-                    rounded
-                  />
-                )}
                 {Array.isArray(item.portfolioTechnologies) &&
                   item.portfolioTechnologies.length > 0 && (
                     <div className="portfolio-technologies">
@@ -68,7 +69,6 @@ const Portfolio = ({ data }) => {
                             src={tech.file.url}
                             alt={tech.title || "Technology"}
                             className="portfolio-tech-icon"
-                            fluid
                           />
                         ) : null
                       )}
@@ -84,10 +84,24 @@ const Portfolio = ({ data }) => {
                     View Repo
                   </Link>
                 )}
+                {openIndex === idx && (
+                  <button
+                    className="portfolio-dropdown-btn portfolio-dropdown-btn--centered"
+                    onClick={() => handleToggle(idx)}
+                    aria-expanded={openIndex === idx}
+                    aria-controls={`desc-${item.contentful_id}`}
+                  >
+                    <img
+                      src="/arrow-down.svg"
+                      alt="Collapse"
+                      className="arrow"
+                    />
+                  </button>
+                )}
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </>
   );
