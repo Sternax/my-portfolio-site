@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
+import { Helmet } from "react-helmet";
 import "../styles/layout.scss";
 
 import Navbar from "./navbar";
@@ -7,7 +8,13 @@ import Footer from "./footer";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query MenuItemsQuery {
+    query LayoutQuery {
+      site {
+        siteMetadata {
+          title
+          description
+        }
+      }
       allContentfulMenuItem {
         nodes {
           label
@@ -26,6 +33,10 @@ const Layout = ({ children }) => {
     : [];
   return (
     <div className="layout">
+      <Helmet>
+        <title>{data.site.siteMetadata.title}</title>
+        <meta name="description" content={data.site.siteMetadata.description} />
+      </Helmet>
       <Navbar menuItems={menuItems} />
       <main style={{ flex: 1 }}>{children}</main>
       <Footer />

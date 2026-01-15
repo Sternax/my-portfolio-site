@@ -15,9 +15,7 @@ export const query = graphql`
         introductionText
       }
       introductionImage {
-        file {
-          url
-        }
+        gatsbyImageData(width: 400, quality: 90, placeholder: BLURRED)
         title
       }
       introductionLink

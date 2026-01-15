@@ -7,6 +7,7 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `My Portfolio Site`,
+    description: `A showcase of my portfolio projects and skills.`,
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
@@ -21,6 +22,7 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sass",
+    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-source-filesystem",
       options: {

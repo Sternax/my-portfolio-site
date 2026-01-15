@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "react-bootstrap/Image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 
 const Introduction = ({ data }) => {
@@ -28,13 +28,12 @@ const Introduction = ({ data }) => {
           </div>
         </div>
         <div className="introduction-section__image">
-          {intro.introductionImage && (
-            <Image
-              src={intro.introductionImage.file.url}
+          {intro.introductionImage?.gatsbyImageData && (
+            <GatsbyImage
+              image={intro.introductionImage.gatsbyImageData}
               alt={intro.introductionImage.title}
+              className="rounded"
               style={{ maxWidth: "400px" }}
-              fluid
-              rounded
             />
           )}
         </div>
