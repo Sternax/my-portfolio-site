@@ -8,7 +8,7 @@ import Footer from "./footer";
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query MenuItemsQuery {
-      allContentfulMenuItem(sort: { order: ASC }) {
+      allContentfulMenuItem {
         nodes {
           label
           order
@@ -19,7 +19,11 @@ const Layout = ({ children }) => {
       }
     }
   `);
-  const menuItems = data.allContentfulMenuItem.nodes;
+  const menuItems = Array.isArray(data?.allContentfulMenuItem?.nodes)
+    ? data.allContentfulMenuItem.nodes.sort(
+        (a, b) => (a.order || 0) - (b.order || 0)
+      )
+    : [];
   return (
     <div className="layout">
       <Navbar menuItems={menuItems} />

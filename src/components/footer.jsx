@@ -8,7 +8,9 @@ const Footer = () => {
       contentfulFooter {
         footerText
         footerIcons {
-          url
+          file {
+            url
+          }
           title
           description
         }
@@ -20,19 +22,19 @@ const Footer = () => {
 
   return (
     <footer>
-      {footerText && (
-        <ul>
+      {footerText && footerText.length > 0 && (
+        <div className="footer-text">
           {footerText.map((text, idx) => (
-            <li key={idx}>{text}</li>
+            <div key={idx}>{text}</div>
           ))}
-        </ul>
+        </div>
       )}
       {footerIcons && (
         <div className="footer-icons">
           {footerIcons.map((icon, idx) => (
             <img
               key={idx}
-              src={icon.url}
+              src={icon.file?.url}
               alt={icon.title || icon.description || "footer icon"}
             />
           ))}

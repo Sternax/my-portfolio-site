@@ -16,6 +16,12 @@ li {
   font-family: "ClashDisplay-ExtraLight";
 }
 
+.footer-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .footer-icons {
   margin-top: 1rem;
 
