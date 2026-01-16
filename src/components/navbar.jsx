@@ -6,7 +6,7 @@ const Navbar = ({ menuItems = [] }) => (
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid">
       <Link className="navbar-brand" to="/">
-        Axel Sterner
+        <img src="/site-icon.png" alt="Site Icon" />
       </Link>
       <button
         className="navbar-toggler"

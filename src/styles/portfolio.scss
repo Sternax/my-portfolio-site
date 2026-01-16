@@ -102,28 +102,6 @@
   }
 }
 
-.portfolio-list {
-  list-style: none;
-  margin: 0 auto;
-  padding: 2rem 0;
-  max-width: 800px;
-}
-
-.portfolio-list-item {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  margin-bottom: 1.5rem;
-  padding: 1.5rem 2rem;
-}
-
-.portfolio-list-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
 .portfolio-description.open {
   display: flex;
   flex-direction: column;
@@ -163,15 +141,4 @@
   width: 32px;
   height: 32px;
   margin-right: 8px;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
