@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
 import Image from "react-bootstrap/Image";
 import "../styles/portfolio.scss";
 import { Link } from "gatsby";
@@ -22,9 +23,9 @@ const Portfolio = ({ data }) => {
               key={item.contentful_id}
               className={`portfolio-card${openIndex === idx ? " open" : ""}`}
             >
-              {item.portfolioFeaturedImage?.file?.url && (
-                <Image
-                  src={item.portfolioFeaturedImage.file.url}
+              {item.portfolioFeaturedImage?.gatsbyImageData && (
+                <GatsbyImage
+                  image={item.portfolioFeaturedImage.gatsbyImageData}
                   alt={item.portfolioFeaturedImage.title || "Featured"}
                   className="portfolio-featured-image"
                 />

@@ -8,9 +8,7 @@ const Footer = () => {
       contentfulFooter {
         footerText
         footerIcons {
-          file {
-            url
-          }
+          url
           title
           description
         }
@@ -34,7 +32,7 @@ const Footer = () => {
           {footerIcons.map((icon, idx) => (
             <img
               key={idx}
-              src={icon.file?.url}
+              src={icon.url}
               alt={icon.title || icon.description || "footer icon"}
             />
           ))}

@@ -18,9 +18,7 @@ export const query = graphql`
           title
         }
         portfolioFeaturedImage {
-          file {
-            url
-          }
+          gatsbyImageData(formats: [WEBP, AUTO])
           title
         }
         portfolioLink
