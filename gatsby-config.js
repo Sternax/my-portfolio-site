@@ -6,8 +6,8 @@ require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    title: `My Portfolio Site`,
-    description: `A showcase of my portfolio projects and skills.`,
+    title: `Axel Sterner Portfolio`,
+    description: `The portfolio site of Axel Sterner, a web developer specializing in front-end development. Showcasing projects, tech stack, and contact information.`,
     siteUrl: `https://asterner.netlify.app/`,
   },
   plugins: [
@@ -27,7 +27,7 @@ module.exports = {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "./static/site-icon.png",
-        name: "My Portfolio Site",
+        name: "Axel Sterner Portfolio",
         short_name: "Portfolio",
         start_url: "/",
         background_color: "#ffffff",
